@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teste Commit e PR</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e3a8a, #0f172a);
+      color: #f8fafc;
+      text-align: center;
+      padding: 1.5rem;
+    }
+    main { max-width: 960px; width: 100%; }
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    p { font-size: 1.125rem; line-height: 1.6; color: #cbd5e1; margin-bottom: 0.75rem; }
+    code {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    section {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
+    button {
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem 1.4rem;
+      background: #38bdf8;
+      color: #0f172a;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+    button:hover { background: #7dd3fc; }
+    button:active { transform: scale(0.97); }
+    .cartoes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+    .cartao {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+    .cartao h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #38bdf8;
+      margin-bottom: 0.75rem;
+    }
+    .cartao blockquote {
+      font-size: 1.02rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: #f8fafc;
+      flex: 1;
+    }
+    .cartao cite {
+      display: block;
+      margin-top: 0.75rem;
+      font-style: normal;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Teste de Commit e PR</h1>
+    <p>Esta página foi criada para testar o fluxo de <code>commit</code> e <em>pull request</em> no Git.</p>
+    <p>Se você está vendo isto, o branch <code>Teste-de-pull-request</code> está funcionando.</p>
+
+    <section>
+      <h2>Passagens de textos sagrados</h2>
+      <button id="gerar" type="button">Gerar passagens</button>
+      <div class="cartoes">
+        <article class="cartao">
+          <h3>Bíblia</h3>
+          <blockquote id="biblia">Clique no botão para receber uma passagem.</blockquote>
+        </article>
+        <article class="cartao">
+          <h3>Alcorão</h3>
+          <blockquote id="alcorao">Clique no botão para receber uma passagem.</blockquote>
+        </article>
+        <article class="cartao">
+          <h3>Bhagavad Gita</h3>
+          <blockquote id="gita">Clique no botão para receber uma passagem.</blockquote>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const biblia = [
+      { texto: "O Senhor é o meu pastor; nada me faltará.", ref: "Salmos 23:1" },
+      { texto: "Tudo posso naquele que me fortalece.", ref: "Filipenses 4:13" },
+      { texto: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito.", ref: "João 3:16" },
+      { texto: "Não andeis ansiosos por coisa alguma; antes, em tudo, sejam os vossos pedidos conhecidos diante de Deus.", ref: "Filipenses 4:6" },
+      { texto: "Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.", ref: "Provérbios 3:5" },
+      { texto: "Sê forte e corajoso; não temas, nem te espantes, porque o Senhor, teu Deus, é contigo.", ref: "Josué 1:9" },
+      { texto: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.", ref: "1 Coríntios 13:4" },
+      { texto: "Lâmpada para os meus pés é a tua palavra e luz para o meu caminho.", ref: "Salmos 119:105" },
+      { texto: "Vinde a mim, todos os que estais cansados e sobrecarregados, e eu vos aliviarei.", ref: "Mateus 11:28" },
+      { texto: "E sabemos que todas as coisas cooperam para o bem daqueles que amam a Deus.", ref: "Romanos 8:28" },
+      { texto: "Aquietai-vos e sabei que eu sou Deus.", ref: "Salmos 46:10" },
+      { texto: "A misericórdia do Senhor renova-se cada manhã; grande é a sua fidelidade.", ref: "Lamentações 3:23" }
+    ];
+
+    const alcorao = [
+      { texto: "Em verdade, com a dificuldade há uma facilidade.", ref: "Alcorão 94:6" },
+      { texto: "E quem confia em Deus, Ele lhe será suficiente.", ref: "Alcorão 65:3" },
+      { texto: "Deus não impõe a nenhuma alma um encargo superior às suas forças.", ref: "Alcorão 2:286" },
+      { texto: "Recordai-vos de Mim, que Eu Me recordarei de vós.", ref: "Alcorão 2:152" },
+      { texto: "Sem dúvida, é na lembrança de Deus que os corações se tranquilizam.", ref: "Alcorão 13:28" },
+      { texto: "E dizei aos homens palavras amáveis.", ref: "Alcorão 2:83" },
+      { texto: "A vida deste mundo não é senão diversão e entretenimento.", ref: "Alcorão 29:64" },
+      { texto: "Meu Senhor, aumenta-me em conhecimento.", ref: "Alcorão 20:114" },
+      { texto: "Quem salva uma vida, é como se tivesse salvado toda a humanidade.", ref: "Alcorão 5:32" },
+      { texto: "Sede pacientes, pois Deus está com os pacientes.", ref: "Alcorão 8:46" },
+      { texto: "A bondade e a maldade não são iguais. Repele o mal com o que é melhor.", ref: "Alcorão 41:34" },
+      { texto: "E a tua misericórdia abrange todas as coisas.", ref: "Alcorão 7:156" }
+    ];
+
+    const gita = [
+      { texto: "Você tem o direito de agir, mas nunca aos frutos da ação.", ref: "Bhagavad Gita 2:47" },
+      { texto: "Aquele que não se perturba diante do prazer nem da dor é firme na sabedoria.", ref: "Bhagavad Gita 2:56" },
+      { texto: "A mente inquieta é difícil de controlar, mas pode ser dominada pela prática.", ref: "Bhagavad Gita 6:35" },
+      { texto: "Melhor cumprir o próprio dever imperfeitamente do que o dever alheio com perfeição.", ref: "Bhagavad Gita 3:35" },
+      { texto: "Aquele que vê a inação na ação e a ação na inação é sábio entre os homens.", ref: "Bhagavad Gita 4:18" },
+      { texto: "O que nunca existiu jamais existirá; o que existe jamais deixará de existir.", ref: "Bhagavad Gita 2:16" },
+      { texto: "A alma não nasce nem morre; não foi feita e nunca deixa de ser.", ref: "Bhagavad Gita 2:20" },
+      { texto: "Realiza o teu trabalho com equanimidade; essa equanimidade se chama ioga.", ref: "Bhagavad Gita 2:48" },
+      { texto: "Quando a meditação é dominada, a mente permanece imóvel como a chama abrigada do vento.", ref: "Bhagavad Gita 6:19" },
+      { texto: "Eu sou o mesmo para todos os seres; não há ninguém a quem eu odeie ou favoreça.", ref: "Bhagavad Gita 9:29" },
+      { texto: "Abandona todas as formas de dever e vem a Mim como teu único refúgio.", ref: "Bhagavad Gita 18:66" },
+      { texto: "A paz é alcançada por aquele que abandona todos os desejos e vive livre do apego.", ref: "Bhagavad Gita 2:71" }
+    ];
+
+    const sortear = (lista) => lista[Math.floor(Math.random() * lista.length)];
+    const preencher = (id, item) => {
+      document.getElementById(id).innerHTML = `"${item.texto}" <cite>${item.ref}</cite>`;
+    };
+
+    document.getElementById("gerar").addEventListener("click", () => {
+      preencher("biblia", sortear(biblia));
+      preencher("alcorao", sortear(alcorao));
+      preencher("gita", sortear(gita));
+    });
+  </script>
+</body>
+</html>
