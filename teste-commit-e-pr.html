@@ -26,6 +26,40 @@
       border-radius: 4px;
       font-size: 0.95rem;
     }
+    section {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    h2 { font-size: 1.5rem; margin-bottom: 1.25rem; }
+    button {
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      padding: 0.7rem 1.4rem;
+      background: #38bdf8;
+      color: #0f172a;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+    button:hover { background: #7dd3fc; }
+    button:active { transform: scale(0.97); }
+    blockquote {
+      margin-top: 1.5rem;
+      min-height: 4rem;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: #f8fafc;
+    }
+    blockquote cite {
+      display: block;
+      margin-top: 0.6rem;
+      font-style: normal;
+      font-weight: 600;
+      color: #38bdf8;
+    }
   </style>
 </head>
 <body>
@@ -33,6 +67,39 @@
     <h1>Teste de Commit e PR</h1>
     <p>Esta página foi criada para testar o fluxo de <code>commit</code> e <em>pull request</em> no Git.</p>
     <p>Se você está vendo isto, o branch <code>Teste-de-pull-request</code> está funcionando.</p>
+
+    <section>
+      <h2>Passagem bíblica aleatória</h2>
+      <button id="gerar" type="button">Gerar passagem</button>
+      <blockquote id="passagem">
+        Clique no botão para receber uma passagem.
+      </blockquote>
+    </section>
   </main>
+
+  <script>
+    const passagens = [
+      { texto: "O Senhor é o meu pastor; nada me faltará.", ref: "Salmos 23:1" },
+      { texto: "Tudo posso naquele que me fortalece.", ref: "Filipenses 4:13" },
+      { texto: "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.", ref: "João 3:16" },
+      { texto: "Não andeis ansiosos por coisa alguma; antes, em tudo, sejam os vossos pedidos conhecidos diante de Deus.", ref: "Filipenses 4:6" },
+      { texto: "Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento.", ref: "Provérbios 3:5" },
+      { texto: "Sê forte e corajoso; não temas, nem te espantes, porque o Senhor, teu Deus, é contigo.", ref: "Josué 1:9" },
+      { texto: "O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.", ref: "1 Coríntios 13:4" },
+      { texto: "Lâmpada para os meus pés é a tua palavra e luz para o meu caminho.", ref: "Salmos 119:105" },
+      { texto: "Vinde a mim, todos os que estais cansados e sobrecarregados, e eu vos aliviarei.", ref: "Mateus 11:28" },
+      { texto: "E sabemos que todas as coisas cooperam para o bem daqueles que amam a Deus.", ref: "Romanos 8:28" },
+      { texto: "Ainda que eu ande pelo vale da sombra da morte, não temerei mal algum, porque tu estás comigo.", ref: "Salmos 23:4" },
+      { texto: "Buscai primeiro o reino de Deus e a sua justiça, e todas essas coisas vos serão acrescentadas.", ref: "Mateus 6:33" }
+    ];
+
+    const botao = document.getElementById("gerar");
+    const alvo = document.getElementById("passagem");
+
+    botao.addEventListener("click", () => {
+      const escolhida = passagens[Math.floor(Math.random() * passagens.length)];
+      alvo.innerHTML = `"${escolhida.texto}" <cite>${escolhida.ref}</cite>`;
+    });
+  </script>
 </body>
 </html>
